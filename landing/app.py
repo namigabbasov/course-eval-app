@@ -29,6 +29,7 @@ html, body, [class*="css"] {
 .stApp { background: #f9f7f4; }
 .block-container { padding: 0 2.5rem 3rem 2.5rem; max-width: 1100px; }
 #MainMenu, footer { visibility: hidden; }
+[data-testid="stHeader"] { display: none; }
 
 .stanford-header {
     background: #8C1515;
@@ -145,10 +146,11 @@ html, body, [class*="css"] {
 .protocol-box {
     background: white;
     border: 1px solid #e8e0d8;
-    border-left: 4px solid #8C1515;
-    border-radius: 4px;
+    border-top: 4px solid #8C1515;
+    border-radius: 8px;
     padding: 1.5rem 2rem;
     margin: 1rem 0;
+    max-width: 650px;
 }
 .protocol-box ol { margin: 0; padding-left: 1.2rem; }
 .protocol-box li { margin-bottom: 0.6rem; font-size: 0.98rem; line-height: 1.5; color: #333; }
@@ -182,11 +184,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown('<div class="page-title">Course Evaluation Pipeline</div>', unsafe_allow_html=True)
-st.markdown(
-    '<div class="page-subtitle">Two independent tools, one workflow: prepare the PDFs, '
-    'review them, then extract the handwritten comments.</div>',
-    unsafe_allow_html=True,
-)
 
 # ── Two-step cards ────────────────────────────────────────────────────────────
 st.markdown(f"""
@@ -206,7 +203,7 @@ st.markdown(f"""
     <div class="step-number">Step 2</div>
     <div class="step-title">Extract Comments</div>
     <div class="step-desc">
-      Upload the ZIP of filtered PDFs from Step 1. This tool transcribes
+      Upload filtered PDFs from Step 1. This tool transcribes
       every handwritten comment and gives you a CSV with course ID,
       comment text, and review flags.
     </div>
@@ -221,22 +218,12 @@ st.markdown('<div class="section-header">How to use these together</div>', unsaf
 st.markdown("""
 <div class="protocol-box">
 <ol>
-  <li>Open <strong>PDF Prep</strong> and upload the scanned evaluation reports (PDFs or a ZIP).</li>
-  <li>Click <strong>Run Filter</strong>, then review the results table — check file sizes and any
-      processing notices before trusting the output.</li>
-  <li>Click <strong>Download All as ZIP</strong>. This is the file you carry to Step 2 — don't
-      unzip or repack it.</li>
-  <li>Open <strong>EvalReader</strong> and upload that same ZIP file directly.</li>
-  <li>Click <strong>Run Extraction</strong>, then check the Results tab — look at rows flagged
-      <code>needs_review</code> before downloading the final CSV.</li>
+  <li>Open <strong>PDF Prep</strong> and upload the scanned evaluation reports.</li>
+  <li>Click <strong>Run Filter</strong>, then review the results table.</li>
+  <li>Click <strong>Download All as ZIP</strong>, unzip, and check the PDFs.</li>
+  <li>Open <strong>EvalReader</strong> and upload these PDFs directly.</li>
+  <li>Click <strong>Run Extraction</strong>, then check the Results tab.</li>
 </ol>
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-<div class="note-box">
-Each step is a human checkpoint, not an automatic pass-through — review the results
-before moving to the next step. Nothing is shared between these two apps except the
-ZIP file you download and re-upload yourself.
-</div>
-""", unsafe_allow_html=True)
