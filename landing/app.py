@@ -184,6 +184,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown('<div class="page-title">Course Evaluation Pipeline</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="page-subtitle">This app digitizes handwritten student course evaluations into '
+    'structured, searchable data. Use it to turn scanned evaluation forms into a clean CSV of '
+    'comments ready for review.</div>',
+    unsafe_allow_html=True,
+)
 
 # ── Two-step cards ────────────────────────────────────────────────────────────
 st.markdown(f"""
@@ -194,7 +200,8 @@ st.markdown(f"""
     <div class="step-desc">
       Upload scanned course-evaluation reports. This tool keeps only the
       printed header block and the target question's handwritten answers,
-      and produces a ZIP of filtered PDFs.
+      and produces a ZIP of filtered PDFs. Uses Python libraries for
+      filtering, no LLM involved.
     </div>
     <div class="step-link"><a href="{PDF_PREP_URL}" target="_blank">Open PDF Prep →</a></div>
   </div>
@@ -205,7 +212,8 @@ st.markdown(f"""
     <div class="step-desc">
       Upload filtered PDFs from Step 1. This tool transcribes
       every handwritten comment and gives you a CSV with course ID,
-      comment text, and review flags.
+      comment text, and review flags. Uses OpenAI API for the
+      handwriting transcription.
     </div>
     <div class="step-link"><a href="{EVAL_READER_URL}" target="_blank">Open EvalReader →</a></div>
   </div>
@@ -226,4 +234,10 @@ st.markdown("""
 </ol>
 </div>
 """, unsafe_allow_html=True)
+
+st.markdown(
+    '<div class="page-subtitle" style="margin-top:2rem;">Need help? Contact '
+    '<a href="mailto:library@law.stanford.edu">library@law.stanford.edu</a>.</div>',
+    unsafe_allow_html=True,
+)
 
